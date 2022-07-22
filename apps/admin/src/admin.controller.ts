@@ -20,7 +20,7 @@ export class AdminController {
   async upload(@UploadedFile('file') file){
     // return file
     return {
-      url:`http://localhost:3000/uploads/${file.filename}`
+      url:`http://81.68.198.249/${file.filename}`
     }
 
   }

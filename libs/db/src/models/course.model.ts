@@ -6,6 +6,10 @@ import { Episode } from './episode.model'
 @modelOptions({
     schemaOptions: {
         timestamps: true,
+        //虚拟字段
+        toJSON:{
+            virtuals:true
+        }
     }
 })
 export class Course {
@@ -25,6 +29,15 @@ export class Course {
     // // 参考类型
     // episodes: Ref<Episode>[]
     // // episodes: Episode[] 
+
+    @Prop({
+        // ref:'Episode',
+        ref:()=>Episode,
+        localField:'_id',
+        foreignField:'course'
+    }
+    )
+    episodes:Ref<Episode>[]
 }
 
 function arrayProp() {

@@ -1,4 +1,5 @@
 import { Global, Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { TypegooseModule } from "nestjs-typegoose";
 import { DbService } from './db.service';
 import { Course } from './models/course.model';
@@ -18,9 +19,15 @@ const models=TypegooseModule.forFeature([User,Course,Episode])
     //   useFindAndModify: false
     // }
     ),
-    models
+    models,
+    //全局注册jwt
+    JwtModule.register({
+      //jwt密钥（加密的
+      secret:'jwtjwtjwtjwt'
+    }),
   ],
   providers: [DbService],
-  exports: [DbService,models],
+                    //导出，确保其他地方可以使用
+  exports: [DbService,models,JwtModule],
 })
 export class DbModule { }

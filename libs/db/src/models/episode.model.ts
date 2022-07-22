@@ -4,24 +4,24 @@ import { Course } from "./course.model";
 
 //为数据添加创建时间和更新时间  
 @modelOptions({
-    schemaOptions:{
+    schemaOptions: {
         timestamps: true,
     }
 })
 export class Episode {
-    @ApiProperty({description:'封面',example:'封面1'})
+    @ApiProperty({ description: '课时名', example: '课时1' })
     @Prop()
-    name:   string;
+    name: string;
 
-    @ApiProperty({description:'封面',example:'文件'})
+    @ApiProperty({ description: '课时文件', example: '文件' })
     @Prop()
     file: string;
 
-// 所属课程
-@ApiProperty({description:'所属课程',example:'{"_id":"62d7ee072645d3bbeea99cbf"}'})
-    @Prop({ref:'Course'})
+    // 所属课程
+    @ApiProperty({ description: '所属课程', example: '{"_id":"62d7ee072645d3bbeea99cbf"}' })
+    @Prop({ ref: 'Course' })
     // @Prop({ref:Course})
     // @Prop({ref:()=>Course})
     // @Prop({type:()=>Course})
-    course:Ref<Course>
+    course: Ref<Course>
 }

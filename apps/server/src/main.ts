@@ -1,8 +1,25 @@
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const options = new DocumentBuilder()
+    .setTitle('vue+nest后台管理API')
+    .setDescription('后台管理界面API')
+    .setVersion('1.0')
+    //swagger启用token的功能(右上角)
+    .addBearerAuth()
+
+    .addTag('')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+
+  SwaggerModule.setup('api-docs', app, document);
+
+  app.enableCors();
+  await app.listen(3001);
+  console.log('http://localhost:3001/api-docs');
+
 }
 bootstrap();
