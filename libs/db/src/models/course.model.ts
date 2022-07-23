@@ -40,6 +40,3 @@ export class Course {
     episodes:Ref<Episode>[]
 }
 
-function arrayProp() {
-    throw new Error('Function not implemented.')
-}

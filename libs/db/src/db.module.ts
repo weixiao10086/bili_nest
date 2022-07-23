@@ -4,9 +4,10 @@ import { TypegooseModule } from "nestjs-typegoose";
 import { DbService } from './db.service';
 import { Course } from './models/course.model';
 import { Episode } from './models/episode.model';
+import { Swiper } from './models/swiperimg.model';
 import { User } from './models/user.model';
                                         //引用模块
-const models=TypegooseModule.forFeature([User,Course,Episode])
+const models=TypegooseModule.forFeature([User,Course,Episode,Swiper])
 //标记为全局模块
 @Global()
 @Module({
