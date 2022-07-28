@@ -26,7 +26,6 @@ export class EpisodesController {
 
     @Get('option')
     async option() {
-
         const courses = (await this.coursemodel.find()).map(v => (
             {
                 label: v.name,

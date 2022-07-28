@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { modelOptions, Prop } from '@typegoose/typegoose'
+import { modelOptions, Prop, Ref } from '@typegoose/typegoose'
 import { hashSync } from 'bcryptjs'
+import { Course } from './course.model'
 //为数据添加创建时间和更新时间  
 @modelOptions({
     schemaOptions: {
@@ -17,7 +18,7 @@ export class User {
     // cnpm i --save @types/bcryptjs bcryptjs
     @Prop({
         //返回是不返回密码（安全(创建时会展示，查询时不会展示)
-        select:false,
+        select: false,
         get(val) {
             return val
         },
@@ -26,5 +27,11 @@ export class User {
         }
     })
     password: string
+
+
+    
+    //扩展性不好的收藏方式
+    // @Prop({ ref: 'Course' })
+    // likes: Ref<Course>
 
 }

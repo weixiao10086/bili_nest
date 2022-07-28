@@ -6,11 +6,13 @@ import { UsersModule } from './users/users.module';
 import { CourseModule } from './course/course.module';
 import { EpisodesModule } from './episodes/episodes.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { Swiper } from '@libs/db/models/swiperimg.model';
+import { SwiperimgModule } from './swiperimg/swiperimg.module';
 const multer = require('multer');
 const MAO = require('multer-aliyun-oss');
 
 @Module({
-  imports: [DbModule, UsersModule, CourseModule, EpisodesModule,
+  imports: [DbModule, UsersModule, CourseModule, EpisodesModule,SwiperimgModule,
     //上传图片配置
     MulterModule.register({
       //存放文件夹
@@ -26,6 +28,7 @@ const MAO = require('multer-aliyun-oss');
       //   }
       // })
     })
+    
   ],
   controllers: [AdminController],
   providers: [AdminService],

@@ -8,11 +8,11 @@ import { InjectModel } from 'nestjs-typegoose';
 @Crud({
     model: Swiper,
     //关闭该模块的特定接口
-    routes:{
-        create:false,
-        update:false,
-        delete:false,
-    }
+    // routes:{
+    //     create:false,
+    //     update:false,
+    //     delete:false,
+    // }
 })
 
 @Controller('swiperimg')

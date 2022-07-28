@@ -12,7 +12,7 @@ async function bootstrap() {
   //                  文件夹位置（名字
   app.useStaticAssets('uploads',{
     //前缀
-    prefix:'/uploads'
+    prefix:'/uploads',
   })
 
 
